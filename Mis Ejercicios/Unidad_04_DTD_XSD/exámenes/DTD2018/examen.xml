@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cronicasvampiricas SYSTEM "examen.dtd.">
+<cronicasvampiricas>
+    <Vampiros>
+        <Stefan edad ="150">Bueno</Stefan>
+        <Damon edad = "150">Un poco de todo</Damon>
+        <Helena>Buena</Helena>
+        <Caroline>Buena</Caroline>
+        <Katerina estado = "Muerta">Malvada</Katerina>
+    </Vampiros>
+    <Originales>
+        <Klaus edad ="1000" estado = "Muerto"></Klaus>
+        <Rebekah>Malvada</Rebekah>
+        <Elijah edad = "1000 años" estado = "Vivo" actitud = "Bueno"/>
+    </Originales>
+    <Herejes> Todos malos
+        <Lily estado ="Muerta">
+            <Hijos>Stefan</Hijos>
+            <Hijos>Damon</Hijos>
+        </Lily>
+        <Nora fuerza="magia">Malvada</Nora>
+        <Mary fuerza="magia">Malvada</Mary>
+        <Julian>Malvado</Julian>
+    </Herejes>
+</cronicasvampiricas>

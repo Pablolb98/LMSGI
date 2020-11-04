@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pelicula SYSTEM "examen2.dtd.">
+<pelicula> Harry Potter
+        <personaje nombre = "Harry" enemigo="voldemort" magia = "negra"/>
+        <personaje nombre = "Hermione" />
+        <personaje nombre = "Ron" />
+        <personaje nombre = "voldemort" enemigo="Harry" />
+        <parte1> &londres;
+            <nombre>La Piedra Filosofal</nombre>
+            <buena clasificacion ="8.9"/>
+            <final>Feliz</final>
+        </parte1>
+        <parte2>
+            <nombre>La camara secreta</nombre>
+            <mala clasificacion ="6"/>
+            <final>cutre</final>
+        </parte2>
+</pelicula>

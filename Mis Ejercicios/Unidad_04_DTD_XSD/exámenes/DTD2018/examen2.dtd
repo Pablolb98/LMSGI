@@ -1,0 +1,22 @@
+<!ELEMENT pelicula (#PCDATA | personaje | parte)*>
+<!ELEMENT personaje EMPTY>
+<!ATTLIST personaje nombre ID #REQUIRED
+                    enemigo IDREF #IMPLIED
+                    magia CDATA #FIXIED "pura">
+<!ELEMENT parte (parte1+, parte2?)>
+<!ELEMENT parte1 (nombre, (buena | mala) final)>
+<!ELEMENT nombre #PCDATA>
+<!ELEMENT buena EMPTY>
+<!ATTLIST buena %clasificacion; >
+<!ELEMENT mala EMPTY>
+<!ATTLIST mala %clasificacion;>
+<!ELEMENT final #PCDATA>
+
+<!ELEMENT parte2 (nombre, (buena | mala) final)>
+<!ELEMENT nombre #PCDATA>
+<!ELEMENT buena EMPTY>
+<!ATTLIST buena %clasificacion; >
+<!ELEMENT mala EMPTY>
+<!ATTLIST mala %clasificacion;>
+<!ELEMENT final #PCDATA>
+<!ENTITY londres "donde todo el mundo habla ingles jajaja">

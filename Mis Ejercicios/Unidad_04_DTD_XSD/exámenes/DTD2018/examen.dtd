@@ -1,0 +1,26 @@
+<!ELEMENT cronicasvampiricas (Vampiros*, Originales?, Herejes+)>
+<!ELEMENT Vampiros (Stefan, Damon, Helena, Caroline, Katerina)>
+<!ELEMENT Originales (Klaus, Rebekah, Elijah)>
+<!ELEMENT Herejes (PCDATA, Lily, Nora, Mary, Julian)>
+<!ELEMENT Stefan (#PCDATA)>
+<!ELEMENT Damon (#PCDATA)>
+<!ELEMENT Helena (#PCDATA)>
+<!ELEMENT Caroline (#PCDATA)>
+<!ELEMENT Katerina (#PCDATA)>
+<!ELEMENT Klaus (#PCDATA)>
+<!ELEMENT Rebekah (#PCDATA)>
+<!ELEMENT Elijah EMPTY>
+<!ELEMENT Lily (Hijos)*>
+<!ELEMENT Hijos (#PCDATA)>
+<!ELEMENT Nora (#PCDATA)>
+<!ELEMENT Mary (#PCDATA)>
+<!ELEMENT Julian (#PCDATA)>
+<!ATTLIST Katerina estado CDATA #REQUIRED>
+<!ATTLIST Damon edad CDATA #REQUIRED>
+<!ATTLIST Stefan edad CDATA #IMPLIED>
+<!ATTLIST Lily estado CDATA #REQUIRED>
+<!ATTLIST Klaus edad CDATA #IMPLIED
+                estado CDATA #FIXED Muerto>
+<!ATTLIST Nora fuerza ID #REQUIRED>
+<!ATTLIST Mary fuerza IDREF #REQUIRED>
+<!ENTITY vampiros SYSTEM "Cronicas vampiricas">
