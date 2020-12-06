@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="universoMarvel"/>
+
+    <xs:complexType name="personaje" mixed="true">
+        <xs:sequence>
+            <xs:element name="traje" type="tipotraje"/>
+            <xs:element name="enemigo" type="minimo1caracter"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipotraje" mixed="true">
+        <xs:all>
+            <xs:element name="creador" type="minimo1caracter"/>
+            <xs:element name="colores" type="tipocolor"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="tipocolor">
+        <xs:attribute name="verde"/>
+        <xs:attribute name="azul"/>
+        <xs:attribute name="negro"/>
+        <xs:attribute name="rojo"/>
+    </xs:complexType>
+
+    <xs:simpleType name="minimo1caracter">
+        <xs:restriction base="xs:string">
+             <xs:minLength value="1"/>
+            </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

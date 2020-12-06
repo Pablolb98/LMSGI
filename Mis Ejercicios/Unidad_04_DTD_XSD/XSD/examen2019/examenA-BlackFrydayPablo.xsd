@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ofertasBlackFriday" type="tipoofertas" />
+
+    <xs:complexType name="tipoofertas">
+        <xs:sequence>
+            <xs:element name="articulo" type="tipoarticulo" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipoarticulo" mixed="true">
+        <xs:sequence>
+            <xs:element name="fabricante" type="choicefabricante" />
+            <xs:element name="oferta" type="tipooferta" />
+            <xs:element name="valoraciones" type="tipovaloraciones" />
+            <xs:element name="preguntas" type="tipopreguntas" />
+            <xs:element name="agregadoACestaDeCompra" type="tipoagregadoACestaDeCompra" />
+        </xs:sequence>
+        <xs:attribute name="codigo" type="tipocodigo" />
+    </xs:complexType>
+
+    <xs:complexType name="choicefabricante">
+        <xs:choice>
+            <xs:element name="canon" />
+            <xs:element name="epson" />
+            <xs:element name="samsung" />
+            <xs:element name="apple" />
+            <xs:element name="philips" />
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="tipooferta" mixed="true">
+        <xs:attribute name="precioHabitual" type="tipoprecioHabitual" />
+        <xs:attribute name="descuento" type="tipodescuento" />
+    </xs:complexType>
+
+    <xs:simpleType name="tipoprecioHabitual">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="\d{2}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipodescuento">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{2}\D"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipovaloraciones">
+        <xs:all>
+            <xs:element name="positiva" type="tipovaloracion" />
+            <xs:element name="negativa" type="tipovaloracion" />
+            <xs:element name="masVotada"></xs:element>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="tipovaloracion">
+        <xs:all>
+            <xs:element name="autor" type="mixedautor" />
+            <xs:element name="texto" type="mixedtexto" />
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="mixedautor" mixed="true"></xs:complexType>
+    <xs:complexType name="mixedtexto" mixed="true"></xs:complexType>
+
+    <xs:complexType name="tipoagregadoACestaDeCompra" mixed="true">
+        <xs:attribute name="value" type="tipovalue" />
+    </xs:complexType>
+    <xs:simpleType name="tipovalue">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\w{2}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipocodigo">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\w{5}\s\d{2}-\d{2}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipopreguntas">
+        <xs:sequence>
+            <xs:element name="pregunta" type="tipopregunta"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipopregunta">
+        <xs:sequence>
+            <xs:element name="autor" type="nombreautor" />
+            <xs:element name="texto" type="tipotexto" />
+            <xs:element name="respuestas" type="tiporespuestas" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="nombreautor">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Pablo" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="nombremasculino">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Pedro"></xs:enumeration>
+            <xs:enumeration value="Álvaro"></xs:enumeration>
+            <xs:enumeration value="Javier"></xs:enumeration>
+            <xs:enumeration value="Gonzalo"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="nombrefemenino">
+        
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Araceli"></xs:enumeration>
+            <xs:enumeration value="Lucía"></xs:enumeration>
+            <xs:enumeration value="Silvia"></xs:enumeration>
+            <xs:enumeration value="Inma"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipotexto" mixed="true"></xs:complexType>
+
+    <xs:complexType name="tiporespuestas" mixed="true">
+        <xs:sequence>
+            <xs:element name="respuesta" type="tiporespuesta"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tiporespuesta" mixed="true">
+        <xs:sequence>
+            <xs:element name="votantesEnPositivo" type="tipovotantesEnPositivo" />
+            <xs:element name="votantesEnNegativo" type="tipovotantesEnNegativo" />
+        </xs:sequence>
+        <xs:attribute name="autor" type="tipoautor"></xs:attribute>
+    </xs:complexType>
+
+   <xs:simpleType name="tipoautor" >
+       <xs:restriction base="xs:string">
+           <xs:minLength value="1"></xs:minLength>
+           <xs:maxLength value="20"></xs:maxLength>
+       </xs:restriction>
+   </xs:simpleType>
+
+    <xs:simpleType name="tipovotan">
+        <xs:list itemType="tipovotantes"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipovotantes">
+        <xs:union memberTypes="tipovotantesEnPositivo tipovotantesEnNegativo"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipovotantesEnPositivo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Pedro"></xs:enumeration>
+            <xs:enumeration value="Araceli"></xs:enumeration>
+            <xs:enumeration value="Lucía"></xs:enumeration>
+            <xs:enumeration value="Álvaro"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipovotantesEnNegativo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Silvia"></xs:enumeration>
+            <xs:enumeration value="Javier"></xs:enumeration>
+            <xs:enumeration value="Inma"></xs:enumeration>
+            <xs:enumeration value="Gonzalo"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
