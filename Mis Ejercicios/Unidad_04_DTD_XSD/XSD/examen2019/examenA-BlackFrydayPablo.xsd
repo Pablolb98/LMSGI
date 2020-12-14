@@ -140,10 +140,6 @@
        </xs:restriction>
    </xs:simpleType>
 
-    <xs:simpleType name="tipovotan">
-        <xs:list itemType="tipovotantes"/>
-    </xs:simpleType>
-
     <xs:simpleType name="tipovotantes">
         <xs:union memberTypes="tipovotantesEnPositivo tipovotantesEnNegativo"/>
     </xs:simpleType>

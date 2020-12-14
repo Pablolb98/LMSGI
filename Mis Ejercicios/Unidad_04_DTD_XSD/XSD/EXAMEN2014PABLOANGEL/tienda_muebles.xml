@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tienda xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="tienda_muebles.xsd">
+    <pedido>
+        <mueble serie="catalogo2014" color="marron">
+            <caracteristicas>
+                <modelo></modelo>
+                <anchura>200</anchura>
+                <altura>250</altura>
+                <profundidad valor="90" />
+                <añoFabricacion>2015</añoFabricacion>
+                <tipoMadera>roble</tipoMadera>
+                <delicado name="si"/>
+                <vendido>
+                    <reservado />
+                </vendido>
+                <fabricante>
+                    <DNI>65893454P</DNI>
+                </fabricante>
+            </caracteristicas>
+        </mueble>
+    </pedido>
+</tienda>

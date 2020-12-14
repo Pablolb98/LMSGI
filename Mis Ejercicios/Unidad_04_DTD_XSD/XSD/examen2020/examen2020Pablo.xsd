@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="piezasdecoche" type="tipopiezasdecoche" />
+
+
+    <xs:complexType name="tipopiezasdecoche">
+        <xs:sequence>
+            <xs:element name="piezasCoche" type="tipopiezascoche" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipopiezascoche">
+        <xs:sequence>
+            <!-- La ventaja de usar xs:sequence es para que puedas usar todos los elementos declarados las veces que quieras-->
+            <!-- Desventaja del sequence: tienen que ir en orden tal y como lo has declarado-->
+            <xs:element name="coche" type="tipocoche" />
+            <xs:element name="piezas" type="tipopiezas" />
+            <xs:element name="disponibilidad" type="tipodiponibilidad" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipopiezas">
+        <xs:all>
+            <!-- xs: all a diferencia del sequence solo se puede usar una vez el elemento declarado -->
+            <!-- ventaja del all: puedes usar los elementos en el orden que quieras (1 vez)-->
+            <xs:element name="motor" type="tipomotor" />
+            <xs:element name="materialDeChasis" type="tipodematerialchasis" />
+            <xs:element name="carroceria" type="tipocarroceria" />
+            <xs:element name="parabrisas" type="tipoparabrisas" /> 
+            <xs:element name="asientos"/>
+            <xs:element name="neumaticos" type="tiponeumaticos"/>
+            <xs:element name="tapiceria" type="tipotapiceria"/>
+            <xs:element name="asientos" type="tipoasientos"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="tipomotor" mixed="true">
+        <xs:sequence>
+            <xs:element name="modelo" type="tipodemodelo" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tipodemodelo" mixed="true">
+        <xs:attribute name="potencia" type="tipoPotencia" />
+    </xs:complexType>
+
+    <xs:simpleType name="tipomodelo">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\w{4}-\d{2}-\w\d{2}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="tipoPotencia">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{3}\s\w{8}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipodematerialchasis">
+        <xs:choice>
+            <xs:element name="aluminio" />
+            <xs:element name="titanio" />
+            <xs:element name="tungsteno" />
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:simpleType name="tipocarroceria">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\w{4}-\w{2}\d{3}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+<xs:simpleType name="tipoparabrisas">
+    <xs:union memberTypes="numeros pulgadascm"/>
+</xs:simpleType>
+
+<xs:simpleType name="pulgadascm">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="pulgadas"></xs:enumeration>
+        <xs:enumeration value="cm"></xs:enumeration>
+    </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="numeros">
+    <xs:restriction base="xs:positiveInteger">
+        <xs:enumeration value="25"/>
+        <xs:enumeration value="50"/>
+        <xs:enumeration value="75"/>
+        <xs:enumeration value="100"/>
+    </xs:restriction>
+</xs:simpleType>
+
+
+<xs:simpleType name="tipodiponibilidad">
+    <xs:list itemType="paginasweb"></xs:list>
+</xs:simpleType>
+<xs:simpleType name="paginasweb">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="www.seat.com"></xs:enumeration>
+        <xs:enumeration value="www.recambiosseat.com"></xs:enumeration>
+        <xs:enumeration value="www.piratas.com"></xs:enumeration>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="tiponeumaticos">
+    <xs:simpleContent>
+      <xs:extension base="minimo3Digitos">
+        <xs:attribute name="anchura" type="tipoanchura" />
+        <xs:attribute name="altura" type="tipoaltura" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="minimo3Digitos">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="10"/>
+      <xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="tipotapiceria">
+      <xs:sequence>
+          <xs:element name="fabricante"/>
+          <xs:element name="fechaFabricacion"/>
+      </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoasientos">
+      <xs:sequence>
+        <xs:element name="fabricante"/>
+        <xs:element name="fechaFabricacion"/>
+        <xs:element name="comodidad"/>
+      </xs:sequence>
+      <xs:attribute name="cantidad" type="tipocantidad"/>
+  </xs:complexType>
+  <xs:simpleType name="tipocantidad">
+      <xs:restriction base="xs:integer">
+          <xs:minInclusive value="1"></xs:minInclusive>
+          <xs:maxInclusive value="20"></xs:maxInclusive>
+      </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="tipocoche">
+      <xs:attribute name="marca" type="tipomarcass"/>
+      <xs:attribute name="modelo" type="tipomodeloss"/>
+      <xs:attribute name="anioConstruccion" type="tipoanoconstruccion"/>
+  </xs:complexType>
+
+  <xs:simpleType name="tipomarcass">
+      <xs:restriction base="xs:string">
+          <xs:pattern value="\w{4}"></xs:pattern>
+      </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipomodeloss">
+    <xs:restriction base="xs:string">  
+     <xs:minLength value="1"></xs:minLength>
+     <xs:maxLength value="20"></xs:maxLength>
+    </xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="tipoanoconstruccion">
+    <xs:restriction base="xs:integer">
+        <xs:pattern value="\d{4}"></xs:pattern>
+    </xs:restriction>
+</xs:simpleType>
+</xs:schema>

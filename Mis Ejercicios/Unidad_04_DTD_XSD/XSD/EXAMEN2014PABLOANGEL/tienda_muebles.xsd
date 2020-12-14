@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="tienda" type="productostienda" />
+
+    <!-- creo un complextype de productos tienda (Muebles en este caso)-->
+    <xs:complexType name="productostienda">
+        <xs:sequence>
+            <xs:element name="pedido" type="tipopedido" />
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="tipopedido">
+        <xs:sequence>
+            <xs:element name="mueble" type="tipomueble" minOccurs="1" maxOccurs="25" />
+        </xs:sequence>
+    </xs:complexType>
+    <!-- creo los sub-elementos que va a tener el elemento mueble-->
+    <xs:complexType name="tipomueble">
+        <xs:sequence>
+            <xs:element name="caracteristicas" type="caracteristicasmueble" />
+        </xs:sequence>
+        <!--Y aqui los atributos-->
+        <xs:attribute name="serie" type="tiposerie" />
+        <xs:attribute name="color" type="tipocolor" />
+    </xs:complexType>
+
+    <xs:complexType name="caracteristicasmueble">
+        <xs:sequence>
+            <xs:element name="modelo" type="xs:string" />
+            <xs:element name="anchura" type="xs:integer" />
+            <xs:element name="altura" type="declaracionaltura" />
+            <xs:element name="profundidad" type="tipoprofundidad" />
+            <xs:element name="añoFabricacion" type="fechafabricacion" />
+            <xs:element name="tipoMadera" type="tipomaderas" />
+            <xs:element name="delicado" type="esdelicado" />
+            <xs:element name="vendido" type="estavendido" />
+            <xs:element name="fabricante" type="tipofabricante" />
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- Aqui declaramos los sub-elementos de delicado y vendido-->
+    <xs:complexType name="esdelicado">
+        <xs:simpleContent>
+            <xs:extension base="estavendido">
+                <xs:attribute name="si" />
+                <xs:attribute name="no" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="estavendido">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="si"></xs:enumeration>
+            <xs:enumeration value="no"></xs:enumeration>
+            <xs:enumeration value="reservado"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!--Declaro el mixtoConValidacion que he creado en el elemento "tipomadera"-->
+    <xs:complexType name="mixtoConValidacion">
+        <xs:simpleContent>
+            <xs:extension base="color2">
+                <xs:attribute name="nombre" type="xs:string" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <!--Declaro el color2-->
+    <xs:simpleType name="color2">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="4" />
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!--Agui declaramos un atributo para el elemento de profundidad con un valor minimo de 0 y un maximo de 100-->
+    <xs:complexType name="tipoprofundidad">
+        <xs:attribute name="valor" type="tipovalor"></xs:attribute>
+    </xs:complexType>
+    <xs:simpleType name="tipovalor">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0" />
+            <xs:maxInclusive value="100" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--Aqui declaro como va a ser el tiposerie-->
+    <xs:simpleType name="tiposerie">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="catalogo2014" />
+            <xs:enumeration value="Línea neoclásica" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--Y aqui el tipoColor-->
+    <xs:simpleType name="tipocolor">
+        <xs:list itemType="colores" />
+    </xs:simpleType>
+    <xs:simpleType name="colores">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="marron" />
+            <xs:enumeration value="azul" />
+            <xs:enumeration value="amarillo" />
+            <xs:enumeration value="rojo" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--Declaro que la fechafabricacion va a tener un valor de 4 digitos-->
+    <xs:simpleType name="fechafabricacion">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="\d{4}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--declaro los distintos tipos de madera para que solo admita uno de esos valores-->
+    <xs:simpleType name="tipomaderas">
+        <xs:list itemType="maderas" />
+    </xs:simpleType>
+    <xs:simpleType name="maderas">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="pino" />
+            <xs:enumeration value="haya" />
+            <xs:enumeration value="roble" />
+            <xs:enumeration value="encina" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- declaro la longitud de la altura del mueble-->
+    <xs:simpleType name="declaracionaltura">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="20" />
+            <xs:maxInclusive value="400"></xs:maxInclusive>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="tipofabricante">
+        <xs:all>
+            <xs:element name="DNI" type="tipoDNI" />
+        </xs:all>
+        <xs:attribute name="CIF" type="tipocif" />
+    </xs:complexType>
+
+    <xs:simpleType name="tipoDNI">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{8}\w"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tipocif">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{8}\w"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
