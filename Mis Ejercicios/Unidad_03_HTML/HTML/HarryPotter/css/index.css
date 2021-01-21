@@ -1,0 +1,9 @@
+body{
+    background: rgb(214, 131, 131);
+}
+
+#divPrincipal{
+    background: cadetblue;
+    width: 90%;
+    margin: 0 auto;
+}
