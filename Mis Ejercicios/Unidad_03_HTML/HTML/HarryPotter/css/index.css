@@ -7,3 +7,34 @@ body{
     width: 90%;
     margin: 0 auto;
 }
+
+#imgBanner{
+    display: inline-block;
+    background: chartreuse;
+    vertical-align: top;
+}
+
+#textBanner{
+    display: inline-block;
+    background: rgb(54, 30, 163);
+    vertical-align: top; 
+}
+
+.fila{
+    background: violet;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.tarjeta{
+    margin: 0;
+    display: inline-block;
+    width: 23%;
+    border:1px solid #000000 ;
+    height: 230px;
+
+}
+.tarjeta img{
+    width: 100%;
+    height: 400px;
+}
