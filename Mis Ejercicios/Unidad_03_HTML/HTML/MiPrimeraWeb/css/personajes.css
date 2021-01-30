@@ -1,0 +1,46 @@
+#dandy{
+    width: 100%;
+}
+#nelson{
+    width: 100%;
+}
+
+#martin{
+    width: 100%;
+}
+
+#tablaTexto{
+    text-align:20px;
+    margin-left: 50px;
+}
+#quitarespacios{
+    border-spacing: 10px;
+}
+
+#malala{
+    padding-left: 40%;
+    display: inline-block;
+}
+
+#textoMalala{
+    font-size: 5mm;
+}
+#fotoDandy{
+    width: 40%;
+    margin-left: 30%;
+}
+#fotoMartin{
+    width: 50%;
+    padding-left: 22%;
+}
+#fotoMandela{
+    width: 40%;
+    padding-left: 25%;    
+}
+#fotoRigoberta{
+    width: 20%;
+    padding-left: 32%;
+}
+#fotoObama{
+    padding-left: 35%;
+}
