@@ -1,0 +1,70 @@
+
+.container-fluid{
+    width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    top: 0;
+    opacity: 0.9;
+    color: black;
+}
+
+#menu {
+    background-color: #ffffffCC;
+    text-align: center;
+    position: sticky;
+    top: 10px;
+    width: 100%;
+    border-bottom: 1.6px solid;
+}
+
+#menu li:hover {
+    text-decoration: underline rgb(255, 81, 0) 1.7px;
+}
+
+#boton{
+    color: black;
+    background-color:#6ae2d6;
+}
+
+#boton:hover{
+    background-color: black;
+    color: white;
+}
+
+.nav-link{
+    color: black;
+}
+
+.nav-link:hover{
+    color:  rgb(255, 81, 0);
+}
+
+.card-title:hover{
+    color: #eb621a;
+
+
+}
+
+.letra2 {
+    font-family: Arial;
+    font-size: 12px;
+    color: #666;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.letra3 {
+    font-family: Arial;
+    font-size: 12px;
+    color: #666;
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    bottom: 0;
+    width: 100vw;
+}
