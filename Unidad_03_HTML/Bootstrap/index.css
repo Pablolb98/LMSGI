@@ -1,0 +1,15 @@
+.navbar-nav{
+    margin-left: 75%;
+}
+
+.home{
+    color: white;
+}
+
+.footer {
+    position: static;
+    bottom: 0;
+    width: 100%;
+    line-height: 60px; 
+    text-align: center; 
+  }
